@@ -1,0 +1,23 @@
+<nz-table style="padding: 30px;" [nzData]="reservations" #basicTable [nzPageSize]="20" [nzShowPagination]="'false'">
+    <thead>
+        <tr>
+            <th style="font-weight: bolder; color: #003973;">Юрист</th>
+            <th style="font-weight: bolder; color: #003973;">Дата</th>
+            <th style="font-weight: bolder; color: #003973;">Статус</th>
+            <th style="font-weight: bolder; color: #003973;">Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reservation of basicTable.data">
+            <td style="font-weight:600;">{{reservation.lawyerName}}</td>
+            <td>{{reservation.date | date: 'dd/MM/yyyy'}}</td>
+            <td style="font-weight: 600;">{{reservation.reservationStatus}}</td>
+            <span *ngIf="reservation.reviewStatus == 'FALSE'">
+                <td>
+                    <button style="margin-left: 10px; margin-top: 15px;" nzSize="small" nz-button nzType="primary" 
+                        nzDanger routerLink="/client/review/{{reservation.id}}">Review</button>
+                </td>
+            </span>
+        </tr>
+    </tbody>
+</nz-table>

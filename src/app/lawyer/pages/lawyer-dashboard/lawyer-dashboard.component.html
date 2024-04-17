@@ -1,0 +1,24 @@
+<nz-table #basicTable [nzData]="reservations" [nzPageSize]="20" [nzShowPagination]="'false'" style="padding: 20px;" >
+    <thead>
+        <tr>
+            <th class="heading">Имя Клиента</th>
+            <th class="heading">Дата</th>
+            <th class="heading">Статус</th>
+            <th class="heading">Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reservation of basicTable.data">
+            <td style="font-weight: 600;">{{reservation.userName}}</td>
+            <td style="font-weight: 600;">{{reservation.date | date : "dd/MM/yyyy"}}</td>
+            <td style="font-weight: 600;">{{reservation.reservationStatus}}</td>
+            <td>
+                <span *ngIf="reservation.reservationStatus === 'PENDING'">
+                    <button style="margin-left: 10px;" nzSize="small" nz-button nzType="primary" (click)="changeReservationStatus(reservation.id, 'Approve')">Approve</button>
+                    <button style="margin-left: 10px;" nzSize="small" nz-button nzType="primary" nzDanger (click)="changeReservationStatus(reservation.id, 'Reject')">Reject</button>
+                </span>
+            </td>
+        </tr>
+
+    </tbody>
+</nz-table>

@@ -1,0 +1,37 @@
+<nz-card class="profile-card" *ngIf="profile">
+    <nz-card-meta nzTitle="Profile Information"></nz-card-meta>
+    <div nz-row nzGutter="16" class="profile-info">
+      <div nz-col nzSpan="12" class="profile-info-item">
+        <p class="profile-info-label">First Name:</p>
+        <p class="profile-info-value">{{ profile.firstname }}</p>
+        <p class="profile-info-label">Last Name:</p>
+        <p class="profile-info-value">{{ profile.lastname }}</p>
+        <p class="profile-info-label">Middle Name:</p>
+        <p class="profile-info-value">{{ profile.middlename }}</p>
+        <p class="profile-info-label">Age:</p>
+        <p class="profile-info-value">{{ profile.age }}</p>
+        <p class="profile-info-label">Experience:</p>
+        <p class="profile-info-value">{{ profile.experience }}</p>
+        <p class="profile-info-label">Phone:</p>
+        <p class="profile-info-value">{{ profile.phone }}</p>
+        <p class="profile-info-label">Email:</p>
+        <p class="profile-info-value">{{ profile.email }}</p>
+      </div>
+      <div nz-col nzSpan="12" class="profile-info-item">
+        <nz-avatar class="profile-avatar" [nzSrc]="updateImg(profile.returnedImg)" nzSize="large"></nz-avatar>
+        <div class="profile-address">
+          <p class="profile-info-label">City:</p>
+          <p class="profile-info-value">{{ profile.city }}</p>
+          <p class="profile-info-label">Building:</p>
+          <p class="profile-info-value">{{ profile.building }}</p>
+          <p class="profile-info-label">Street:</p>
+          <p class="profile-info-value">{{ profile.street }}</p>
+          <p class="profile-info-label">Description:</p>
+          <p class="profile-info-value">{{ profile.description }}</p>
+        </div>
+      </div>
+      <div style="float: right;">
+        <button nzSize="small" nz-button nzType="primary" routerLink="/lawyer/update/{{profile.id}}">Update</button>
+      </div>
+    </div>
+  </nz-card>
